@@ -1,13 +1,11 @@
 package com.malagueta.backend.credito.api;
 
 import com.malagueta.backend.credito.model.Credito;
+import com.malagueta.backend.credito.model.User;
 import com.malagueta.backend.credito.services.impl.CreditoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,16 +21,16 @@ public class CreditoAPI {
 
 
     @PostMapping("credito/creat")
-    @PreAuthorize("hasAuthority('ROLE_CREDITOS')")
     public Credito createCredito(@RequestBody Credito credito)
     {
         return creditoService.creatCredito(credito);
     }
 
     @GetMapping("hello")
-    public String hello()
+    @CrossOrigin
+    public User hello()
     {
-        return "Hello";
+        return new User().setName("Arsenio Malagueta").setSenha("secret");
     }
 
 

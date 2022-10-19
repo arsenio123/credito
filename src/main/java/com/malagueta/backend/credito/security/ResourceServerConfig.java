@@ -32,8 +32,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/hello").permitAll()
+        http.authorizeRequests()
                 .antMatchers("/oauth/token").permitAll()
+                .antMatchers("hello").permitAll()
+                .antMatchers("/hello").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

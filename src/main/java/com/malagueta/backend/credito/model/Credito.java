@@ -3,6 +3,7 @@ package com.malagueta.backend.credito.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -13,14 +14,19 @@ public class Credito {
     private Integer id;
     private Date createdDate;
     private Date updateDate;
-    private String createdBy; // este campo no futoro vai conter o Objecto user
-    private String aprovadoPOr; // este campo vai conter o user que aprovou o credito
+    @OneToOne
+    private User createdBy; // este campo no futoro vai conter o Objecto user
+    @OneToOne
+    private User aprovadoPOr; // este campo vai conter o user que aprovou o credito
     @ManyToOne
     @JoinColumn(name="cliente_id", nullable=false)
     private Cliente cliente;// este capo no futuro vai conter o Cliente a quem está associado o Credito
     private long valor;
     private Date doDate;
     private double jurus;
+
+    @OneToMany
+    private Set<Garantia> garanias;
 
 
     public Date getCreatedDate() {
@@ -39,19 +45,19 @@ public class Credito {
         this.updateDate = updateDate;
     }
 
-    public String getCreatedBy() {
+    public User getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
     }
 
-    public String getAprovadoPOr() {
+    public User getAprovadoPOr() {
         return aprovadoPOr;
     }
 
-    public void setAprovadoPOr(String aprovadoPOr) {
+    public void setAprovadoPOr(User aprovadoPOr) {
         this.aprovadoPOr = aprovadoPOr;
     }
 

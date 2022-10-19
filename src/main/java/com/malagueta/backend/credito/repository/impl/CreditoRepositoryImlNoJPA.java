@@ -1,6 +1,7 @@
 package com.malagueta.backend.credito.repository.impl;
 
 import com.malagueta.backend.credito.model.Credito;
+import com.malagueta.backend.credito.model.User;
 import com.malagueta.backend.credito.repository.CreditoRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -20,8 +21,8 @@ public class CreditoRepositoryImlNoJPA implements CreditoRepository {
     @Override
     public Credito createCredito(Credito credito) {
         credito=new Credito();
-        credito.setAprovadoPOr("Arsenio gerente");
-        credito.setCreatedBy("Arsenio cliente");
+        credito.setAprovadoPOr(new User());
+        credito.setCreatedBy(new User());
         credito.setJurus(30);
         credito.setDoDate(Calendar.getInstance().getTime());
         credito.setValor(500);

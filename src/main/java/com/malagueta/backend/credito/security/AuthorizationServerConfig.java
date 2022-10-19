@@ -24,7 +24,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory().withClient("react")
                 .secret("{noop}r34ct")
                 .scopes("read","write")
-                .authorizedGrantTypes("password").accessTokenValiditySeconds(120);
+                .authorizedGrantTypes("password").accessTokenValiditySeconds(1200);
     }
 
     @Override
