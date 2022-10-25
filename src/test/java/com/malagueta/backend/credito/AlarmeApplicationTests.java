@@ -16,7 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-@SpringBootTest
+//@SpringBootTest
 public class AlarmeApplicationTests {
 
     Logger logger= LoggerFactory.getLogger(AlarmeApplicationTests.class);
@@ -26,7 +26,7 @@ public class AlarmeApplicationTests {
     @Autowired
     private ClienteRepository clienteDao;
 
-    @Test
+   // @Test
    public void contextLoads() {
         logger.debug("Hello Debugging");
         logger.info("Hello Info");
@@ -35,7 +35,7 @@ public class AlarmeApplicationTests {
        // Assert.notEmpty(creditoService.getCreditoRepository(),"que mensagem é essa tem de estudar");
     }
 
-    @Test
+    //@Test
     public void testCreateClient(){
         Cliente cliente=new Cliente();
         cliente.setDataNascimento(Calendar.getInstance().getTime());
@@ -45,7 +45,7 @@ public class AlarmeApplicationTests {
     }
 
 
-    @Test
+    //@Test
    public void testCreatCredit() {
         Credito credito=new Credito();
         Calendar now=Calendar.getInstance();
