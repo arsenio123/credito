@@ -9,6 +9,7 @@ public class Garantia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String docB64;
+    private String descricao;
 
     @OneToOne
     private Credito credito_id;
@@ -32,4 +33,14 @@ public class Garantia {
         this.credito_id = credito_id;
         return this;
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+
 }

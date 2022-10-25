@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface GarantiaService {
     public List<Garantia> getGarantiafromCredito(int credito_Id);
+
+    public Garantia criarGarantia(Garantia garantia);
 }

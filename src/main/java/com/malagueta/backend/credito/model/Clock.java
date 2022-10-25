@@ -31,4 +31,6 @@ public class Clock {
     public void setSec(int sec) {
         this.sec = sec;
     }
+
+
 }

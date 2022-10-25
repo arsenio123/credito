@@ -23,4 +23,9 @@ public class GarantiaServiceImpl implements GarantiaService {
         logger.info("fim do processo de garantia");
         return garantias;
     }
+
+    @Override
+    public Garantia criarGarantia(Garantia garantia) {
+        return null;
+    }
 }

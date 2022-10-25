@@ -10,7 +10,7 @@ import java.util.Set;
 public class Credito {
     //dados de auditoria
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Date createdDate;
     private Date updateDate;
