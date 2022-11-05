@@ -1,5 +1,5 @@
 package com.malagueta.backend.credito.values;
 
 public enum Estados {
-    EM_VIGOR, EXPIRADO, COBRADO
+    REQUERIDO,EM_VIGOR,NEGADO,CORRECCAO, EXPIRADO, COBRADO
 }

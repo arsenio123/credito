@@ -14,6 +14,9 @@ public class Cliente {
     private Date dataNascimento;
     private Integer rendimento;
 
+    @OneToMany
+    private Set<Documento> documento;
+
     @OneToMany(mappedBy="cliente")
     private Set<Credito> creditos;
 
@@ -21,8 +24,9 @@ public class Cliente {
         return id;
     }
 
-    public void setId(int id) {
+    public Cliente setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getNome() {
@@ -55,5 +59,14 @@ public class Cliente {
 
     public void setCreditos(Set<Credito> creditos) {
         this.creditos = creditos;
+    }
+
+    public Set<Documento> getDocumento() {
+        return documento;
+    }
+
+    public Cliente setDocumento(Set<Documento> documento) {
+        this.documento = documento;
+        return this;
     }
 }

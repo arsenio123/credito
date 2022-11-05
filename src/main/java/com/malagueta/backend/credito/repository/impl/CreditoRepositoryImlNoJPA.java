@@ -1,5 +1,6 @@
 package com.malagueta.backend.credito.repository.impl;
 
+import com.malagueta.backend.credito.model.Cliente;
 import com.malagueta.backend.credito.model.Credito;
 import com.malagueta.backend.credito.model.User;
 import com.malagueta.backend.credito.repository.CreditoRepository;
@@ -15,7 +16,7 @@ public class CreditoRepositoryImlNoJPA implements CreditoRepository {
 
     @Override
     public List<Credito> getAllCredit() {
-        return null;
+        return getAllCredit();
     }
 
     @Override
@@ -29,5 +30,15 @@ public class CreditoRepositoryImlNoJPA implements CreditoRepository {
         credito.setUpdateDate(Calendar.getInstance().getTime());
         credito.setCreatedDate(Calendar.getInstance().getTime());
         return credito;
+    }
+
+    @Override
+    public List<Credito> findOpenCredit(Cliente cliente) {
+        return null;
+    }
+
+    @Override
+    public List<Credito> getCreditBy(Credito credito) {
+        return null;
     }
 }

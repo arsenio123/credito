@@ -23,7 +23,7 @@ public class CreditoAPI {
     @PostMapping("credito/creat")
     public Credito createCredito(@RequestBody Credito credito)
     {
-        return creditoService.creatCredito(credito);
+        return creditoService.creatCredit(credito);
     }
 
     @GetMapping("hello")
@@ -38,6 +38,6 @@ public class CreditoAPI {
     @PreAuthorize("hasAuthority('ROLE_CREDITOS')")
     public List<Credito> get(){
         System.out.println("iniciando o get de creditos");
-        return creditoService.getCreditoRepository();
+        return creditoService.listCredit();
     }
 }

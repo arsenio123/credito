@@ -14,15 +14,17 @@ public class Credito {
     private Integer id;
     private Date createdDate;
     private Date updateDate;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private User createdBy; // este campo no futoro vai conter o Objecto user
     @OneToOne
     private User aprovadoPOr; // este campo vai conter o user que aprovou o credito
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="cliente_id", nullable=false)
     private Cliente cliente;// este capo no futuro vai conter o Cliente a quem está associado o Credito
+    //@Enumerated(EnumType.STRING)
     private long valor;
     private Date doDate;
+    private CreditoSatus estado;
     private double jurus;
 
     @OneToMany
