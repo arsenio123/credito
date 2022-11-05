@@ -1,10 +1,14 @@
 package com.malagueta.backend.credito;
 
+import com.malagueta.backend.credito.api.CreditoAPI;
 import com.malagueta.backend.credito.model.Cliente;
 import com.malagueta.backend.credito.model.Credito;
+import com.malagueta.backend.credito.model.CreditoSatus;
 import com.malagueta.backend.credito.model.User;
 import com.malagueta.backend.credito.repository.CreditoRepository;
+import com.malagueta.backend.credito.repository.impl.search.SearchCredito;
 import com.malagueta.backend.credito.services.impl.CreditoService;
+import com.malagueta.backend.credito.values.Estados;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +25,10 @@ public class CreditoUseCaseTest {
     Logger logger= LoggerFactory.getLogger(CreditoUseCaseTest.class);
    @Autowired
    public CreditoService creditoService;
+   @Autowired
+   public SearchCredito searchCredito;
+   @Autowired
+   public CreditoAPI creditoAPI;
 
    @Test
    public void testCreateCredito(){
@@ -42,7 +50,7 @@ public class CreditoUseCaseTest {
      */
    @Test
    public void getAllCredit(){
-       List<Credito> creditos=creditoService.listCredit();
+       List<Credito> creditos=creditoAPI.get();;
        creditos.stream().forEach(credito -> {
            System.out.println("nome do cliente "+ credito.getCliente().getNome()
                    +", credito numero: "+credito.getId()+
@@ -55,7 +63,11 @@ public class CreditoUseCaseTest {
      * Listar credito por data de aprovacao
      */
     @Test
-    public void testarListaCreditoDataAprovacao(){
+    public void lstaCreditoByClienteAndEstado(){
+
+        Credito credito=creditoService.listCredit().get(1);
+        System.out.println(" lista com "+searchCredito.
+                findByClienteAndEstado(credito.getCliente(), credito.getEstado()).size());
     }
 
     /**

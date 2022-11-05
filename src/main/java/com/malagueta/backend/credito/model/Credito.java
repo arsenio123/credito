@@ -106,6 +106,24 @@ public class Credito {
         this.id = id;
     }
 
+    public CreditoSatus getEstado() {
+        return estado;
+    }
+
+    public Credito setEstado(CreditoSatus estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public Set<Garantia> getGaranias() {
+        return garanias;
+    }
+
+    public Credito setGaranias(Set<Garantia> garanias) {
+        this.garanias = garanias;
+        return this;
+    }
+
     public String toString(){
         StringBuilder builder=new StringBuilder();
         builder.append("Credito [");

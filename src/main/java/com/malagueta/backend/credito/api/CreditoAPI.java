@@ -2,6 +2,7 @@ package com.malagueta.backend.credito.api;
 
 import com.malagueta.backend.credito.model.Credito;
 import com.malagueta.backend.credito.model.User;
+import com.malagueta.backend.credito.repository.impl.search.SearchCredito;
 import com.malagueta.backend.credito.services.impl.CreditoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,12 +13,15 @@ import java.util.List;
 
 @RestController
 public class CreditoAPI {
-    private CreditoService creditoService;
-
     @Autowired
-    public CreditoAPI(CreditoService creditoService){
-        this.creditoService=creditoService;
-    }
+    private CreditoService creditoService;
+    @Autowired
+    private SearchCredito searchCredito;
+
+
+    //public CreditoAPI(CreditoService creditoService){
+    //    this.creditoService=creditoService;
+    //}
 
 
     @PostMapping("credito/creat")

@@ -18,9 +18,6 @@ public class CreditoService {
     @Autowired
     private CreditoRepository creditoRepository;
 
-   /* @Autowired
-    public CreditoService(CreditoRepository creditoRepository){this.creditoRepository = creditoRepository;
-    }*/
     public List<Credito> listCredit() {
         return creditoRepository.getAllCredit();
     }
