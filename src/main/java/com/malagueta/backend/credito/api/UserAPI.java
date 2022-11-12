@@ -1,7 +1,9 @@
 package com.malagueta.backend.credito.api;
+import com.malagueta.backend.credito.model.Credito;
 import com.malagueta.backend.credito.model.User;
 import com.malagueta.backend.credito.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +19,7 @@ public class UserAPI {
         this.userServices =userServices;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("user/list")
     public List<User> getUsers(){
         return userServices.getUser();

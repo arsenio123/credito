@@ -53,7 +53,7 @@ public class User {
         return this;
     }
 
-    public String toString(){
+    /*public String toString(){
         StringBuilder builder=new StringBuilder();
         builder.append("User [ userName: ");
         builder.append(name);
@@ -61,5 +61,5 @@ public class User {
         roles.forEach(role->builder.append(role.getDescricao()+","));
         builder.append("]");
         return builder.toString();
-    }
+    }*/
 }

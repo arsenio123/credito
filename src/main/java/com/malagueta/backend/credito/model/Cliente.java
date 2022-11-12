@@ -17,9 +17,6 @@ public class Cliente {
     @OneToMany
     private Set<Documento> documento;
 
-    @OneToMany(mappedBy="cliente")
-    private Set<Credito> creditos;
-
     public int getId() {
         return id;
     }
@@ -53,13 +50,6 @@ public class Cliente {
         this.rendimento = rendimento;
     }
 
-    public Set<Credito> getCreditos() {
-        return creditos;
-    }
-
-    public void setCreditos(Set<Credito> creditos) {
-        this.creditos = creditos;
-    }
 
     public Set<Documento> getDocumento() {
         return documento;

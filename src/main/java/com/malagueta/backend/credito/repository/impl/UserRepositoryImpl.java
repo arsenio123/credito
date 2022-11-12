@@ -20,8 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> getUsers() {
         EntityManager entityManager=emf.createEntityManager();
         entityManager.getTransaction().begin();
-        List<User> users=entityManager.createQuery("from User", User.class).getResultList();
-        entityManager.find(User.class, new Object());
+        List<User> users=entityManager.createQuery("select u from User u", User.class).getResultList();
         entityManager.close();
         return users;
     }

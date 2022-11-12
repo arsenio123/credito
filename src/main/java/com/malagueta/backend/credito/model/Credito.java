@@ -1,34 +1,50 @@
 package com.malagueta.backend.credito.model;
 
-
+import org.springframework.lang.NonNull;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 
 @Entity
-public class Credito {
+public class Credito implements Serializable {
     //dados de auditoria
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    //@Column(nullable = false)
     private Date createdDate;
     private Date updateDate;
-    @OneToOne(cascade = {CascadeType.ALL})
+
+
+    @OneToOne(cascade = {CascadeType.ALL}, optional = false)
     private User createdBy; // este campo no futoro vai conter o Objecto user
     @OneToOne
     private User aprovadoPOr; // este campo vai conter o user que aprovou o credito
+
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="cliente_id", nullable=false)
     private Cliente cliente;// este capo no futuro vai conter o Cliente a quem está associado o Credito
     //@Enumerated(EnumType.STRING)
+
+    @NonNull
     private long valor;
+   // @Column(nullable = false)
     private Date doDate;
+    private Date beginDate;
+   // @Column(nullable = false)
+   @Enumerated(EnumType.STRING)
     private CreditoSatus estado;
     private double jurus;
 
+    private double balance;
+
     @OneToMany
     private Set<Garantia> garanias;
+
+    @OneToOne
+    private Producto producto;
 
 
     public Date getCreatedDate() {
@@ -67,8 +83,9 @@ public class Credito {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public Credito setCliente(Cliente cliente) {
         this.cliente = cliente;
+        return this;
     }
 
     public long getValor() {
@@ -115,6 +132,15 @@ public class Credito {
         return this;
     }
 
+    public Date getBeginDate() {
+        return beginDate;
+    }
+
+    public Credito setBeginDate(Date beginDate) {
+        this.beginDate = beginDate;
+        return this;
+    }
+
     public Set<Garantia> getGaranias() {
         return garanias;
     }
@@ -124,10 +150,32 @@ public class Credito {
         return this;
     }
 
+
     public String toString(){
         StringBuilder builder=new StringBuilder();
-        builder.append("Credito [");
-        builder.append("cliente:"+getCliente());
+                builder.append(" Credito [");
+        builder.append(" ID=");
+        builder.append(id);
+        builder.append(", cliente=");
+        builder.append(id);
+        builder.append(", producto= ");
+        builder.append("producto");
+        builder.append(", juro=");
+        builder.append(jurus);
+        builder.append(", user");
+        builder.append(createdBy);
         return builder.toString();
     }
+
+   /* public String toString(){
+        GsonJsonParser converter= new GsonJsonParser();
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = null;
+        try {
+            json = ow.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return json;
+    }*/
 }

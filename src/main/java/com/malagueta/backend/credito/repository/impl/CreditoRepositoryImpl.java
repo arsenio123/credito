@@ -21,7 +21,12 @@ import java.util.List;
 
 @Profile("JPA")
 @Component
-public class CreditoRepositoryImpl extends GenericJDBCRepository<Credito> implements CreditoRepository {
+public class CreditoRepositoryImpl
+        extends GenericJDBCRepository<Credito>
+        implements CreditoRepository {
+
+    @PersistenceUnit
+    private EntityManagerFactory emgFactory;
 
     public Credito getAllCredit(Credito credito) {
         return findByID(credito);
@@ -33,7 +38,7 @@ public class CreditoRepositoryImpl extends GenericJDBCRepository<Credito> implem
 
     @Override
     public Credito createCredito(Credito credito) {
-        return (Credito) saveUpdate(credito);
+        return  saveUpdate(credito);
     }
 
     @Override

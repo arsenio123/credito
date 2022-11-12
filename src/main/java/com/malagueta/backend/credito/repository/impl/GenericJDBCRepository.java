@@ -26,7 +26,7 @@ protected EntityManagerFactory emgFactory;
     public List<T> getAll(Object o) {
         EntityManager storage=emgFactory.createEntityManager();
         storage.getTransaction().begin();
-        List<T> list = (List<T>) storage.createQuery(" from  "+o.getClass().getName(), o.getClass()).getResultList();
+        List<T> list = (List<T>) storage.createQuery("from  "+o.getClass().getName(), o.getClass()).getResultList();
         storage.close();
         return list;
 
